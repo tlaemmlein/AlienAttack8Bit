@@ -5,7 +5,7 @@ import pgzrun
 
 # Globale Initianisierung
 WIDTH = 1500
-HEIGHT = 800
+HEIGHT = 600
 score = 0
 
 ship = Actor("ship")
@@ -75,7 +75,7 @@ def update():
 
 def on_key_up(key):
     if key == keys.SPACE:
-        rocket = Actor("rocket")
+        rocket = Actor("laser")
         rocket.pos = ship.x, ship.y -25
         rocket.status = 0
         rockets.append(rocket)
