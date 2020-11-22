@@ -3,35 +3,46 @@
 import pgzrun
 
 
-WIDTH = 800
-HEIGHT = 600
+WIDTH = 1500
+HEIGHT = 800
 RED = 200, 0, 0
 BOX = Rect((20, 20), (100, 100))
 
 ship = Actor("ship")
-ship.pos = 370,500
+ship.pos = 370,HEIGHT-(ship.height/2.0)
+
+anzahl_aliens = 25
+aliens=[]
+alien_abstand = 60
+
+for x in range(anzahl_aliens):
+    alien = Actor("alien")
+    alien.pos = (30+alien_abstand*x),30
+    aliens.append(alien)
+
 
 def draw():
     screen.clear()
-    #screen.draw.circle((400, 300), 30, 'white')
-    #screen.draw.rect(BOX, RED)
     ship.draw()
-    #screen.blit('ship', (370, 500))
+    for x in range(anzahl_aliens):
+        aliens[x].draw()
+
 
 def update():
     if keyboard.left:
         #print("links")
-        ship.x = ship.x - 5
+        ship.x = ship.x - 4
         if (ship.x < 0):
             ship.x = 0
     elif keyboard.right:
         #print("rechts")
-        ship.x = ship.x + 5
+        ship.x = ship.x + 4
         if (ship.x > WIDTH):
             ship.x = WIDTH
-    elif keyboard.up:
-        print("Feuer")
 
+def on_key_up(key):
+    if key == keys.SPACE:
+        print("Feuer")
 
 pgzrun.go()
 
