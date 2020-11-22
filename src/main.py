@@ -26,6 +26,10 @@ def bewege_rockets():
     print("bewege " + str(len(rockets)) + " rockets")
     for r in rockets:
         r.y = r.y - 5
+        if (r.y <0):
+            rockets.remove(r)
+        
+            
     clock.schedule(bewege_rockets, 0.01)
 
 clock.schedule(bewege_rockets, 0.01)
